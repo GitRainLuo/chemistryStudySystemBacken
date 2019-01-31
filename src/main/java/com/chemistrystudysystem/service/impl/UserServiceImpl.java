@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService{
     //注册
     @Override
     @Transactional
-    public boolean register(User user){
+    public JSONObject register(User user){
         if(user == null){
             log.error("user不能为空!");
             try {
@@ -41,8 +41,27 @@ public class UserServiceImpl implements UserService{
                 e.printStackTrace();
             }
         }
+        JSONObject registerData = new JSONObject();
+        JSONObject jsData = new JSONObject();
+        //校验是否有账号了
+        if(user.getAccount() != null){
+            User user1 = userRepository.findByAccount(user.getAccount());
+            if(user1 == null){
+                jsData.put("code",0);
+                jsData.put("msg","注册成功");
+                registerData.put("data",jsData);
+            }else if(user.getAccount().equals(user1.getAccount())){
+                jsData.put("code",999);
+                jsData.put("msg","账号已经存在");
+                registerData.put("data",jsData);
+            }
+        }
+        if("admin".equals(user.getAccount())){
+            //管理员
+            user.setUserType("admin");
+        }
         userRepository.save(user);
-        return true;
+        return registerData;
     }
     //登录
     public JSONObject login(JSONObject params){

@@ -11,7 +11,7 @@ import com.chemistrystudysystem.entity.User;
  */
 public interface UserService {
     //用户注册
-    boolean register(User user);
+    JSONObject register(User user);
     //用户登录
     JSONObject login(JSONObject params);
 }

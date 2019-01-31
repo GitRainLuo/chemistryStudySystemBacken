@@ -5,6 +5,7 @@ package com.chemistrystudysystem.api;/**
  * @Version:1.0
  */
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.chemistrystudysystem.entity.User;
 import com.chemistrystudysystem.service.UserService;
@@ -35,7 +36,7 @@ public class UserServiceApi {
     * 用户注册
     **/
     @PostMapping("/register")
-    public boolean register(@RequestBody User user){
+    public JSONObject register(@RequestBody User user){
         return userService.register(user);
     }
 
