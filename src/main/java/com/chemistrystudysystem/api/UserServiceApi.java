@@ -5,7 +5,6 @@ package com.chemistrystudysystem.api;/**
  * @Version:1.0
  */
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.chemistrystudysystem.entity.User;
 import com.chemistrystudysystem.service.UserService;
@@ -46,5 +45,13 @@ public class UserServiceApi {
     @PostMapping("/login")
     public JSONObject login(@RequestBody JSONObject params){
         return userService.login(params);
+    }
+
+    /*
+     * 更新信息
+     **/
+    @PostMapping("/update")
+    public JSONObject update(@RequestBody JSONObject params){
+        return userService.update(params);
     }
 }

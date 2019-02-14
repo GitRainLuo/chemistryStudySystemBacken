@@ -101,4 +101,32 @@ public class UserServiceImpl implements UserService{
         }
         return resData;
     }
+
+    //更新信息
+    @Override
+    @Transactional
+    public JSONObject update(JSONObject params){
+        if(params == null){
+            log.error("更新信息为空,失败");
+            try {
+                throw new Exception("更新信息为空");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        JSONObject upRes = new JSONObject();
+        JSONObject jsonObject = new JSONObject();
+        String acc = params.get("account").toString();
+        String pass = params.get("password").toString();
+        log.info("acc:"+acc+"---"+"pass:"+pass);
+        String phone = params.get("userPhone").toString();
+        String email = params.get("email").toString();
+        int res = userRepository.updateUserInfo(pass,phone,email,acc);
+        if (res > 0){
+            jsonObject.put("code",0);
+            jsonObject.put("msg","更新成功");
+            upRes.put("data",jsonObject);
+        }
+        return  upRes;
+    }
 }

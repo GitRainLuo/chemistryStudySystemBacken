@@ -14,4 +14,6 @@ public interface UserService {
     JSONObject register(User user);
     //用户登录
     JSONObject login(JSONObject params);
+    //更新信息
+    JSONObject update(JSONObject params);
 }
