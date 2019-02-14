@@ -34,6 +34,12 @@ public class User {
     private String id;
 
     /*
+     * 姓名
+     **/
+    @Column(name = "user_name")
+    private String userName;
+
+    /*
      * 账号
      **/
     @Column(name = "account")
