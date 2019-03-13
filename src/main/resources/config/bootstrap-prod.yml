@@ -1,0 +1,16 @@
+ spring:
+   datasource:
+ #    驱动
+     driver-class-name: com.mysql.jdbc.Driver
+     #serverTimezone=UTC 或者(serverTimezone=GMT%2B8) 解决mysql默认的是美国的时区，而我们中国大陆要比他们迟8小时，采用+8:00格式
+     #或者mysql 设置set global time_zone='+8:00'(查看时区show variables like '%time_zone%')
+     #解决警告信息
+     #在数据库连接的url中添加useSSL=false 或者 url中添加useSSL=true，并且提供服务器的验证证书
+     url: jdbc:mysql://112.74.45.191:3306/chemistrystudy?useSSL=false&useUnicode=true&serverTimezone=UTC&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+     username: chemistrystudy
+     password: chemistrystudy
+   jpa:
+     database: mysql
+     hibernate:
+       ddl-auto: none
+     show-sql: true
