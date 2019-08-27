@@ -12,3 +12,14 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
+#可以在这里配置跨域问题
+CrossOrigin:
+  #允许跨域的
+  origins: http://localhost,http://127.0.0.1,http://112.74.45.191,http:hmj.kim,https://112.74.45.191,https:hmj.kim
+  #否允许用户发送、处理 cookie
+  allowCredentials: "true"
+  methods: GET,HEAD,POST,PUT,PATCH,DELETE,TRACE
+  exposedHeaders: X-Auth-Token,Content-Type
+  allowedHeaders: X-Auth-Token,Content-Type,X-CURRENT-USER-ID
+  #预检请求的有效期，单位为秒。有效期内，不会重复发送预检请求
+  maxAge: "180"

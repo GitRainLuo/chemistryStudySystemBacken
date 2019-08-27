@@ -1,10 +1,11 @@
 server:
-  port: 443
+#  port: 443
+  port: 8081
   tomcat:
     uri-encoding: utf-8
 spring:
   profiles:
-    active: local
-#    active: prod
+#    active: local
+    active: prod
   application:
     name: chemistryStudySystemBacken
